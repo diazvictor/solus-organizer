@@ -1,0 +1,30 @@
+{
+	"collection": {
+		"gba": {
+			"name": "GAME BOY ADVANCE",
+			"controller": "gba",
+			"launch": "/home/victor/Proyectos/GIT/mgba/sdl/mgba",
+			"files": {
+				"1": {
+					"game": "Advance Wars",
+					"file": "/home/victor/Documentos/Roms/Game Boy Advance/Advance Wars.gba"
+				}
+			}
+		},
+		"snes": {
+			"name": "SUPER NINTENDO",
+			"controller": "snes",
+			"launch": "/home/victor/Proyectos/GIT/snes9x/gtk/snes9x-gtk",
+			"files": {
+				"1": {
+					"game": "Super Mario World",
+					"file": "/home/victor/Documentos/Roms/Super Nintendo/Super Mario World.smc"
+				},
+				"2": {
+					"game": "Donkey Kong Country 3 - Dixie Kong's Double Trouble",
+					"file": "/home/victor/Documentos/Roms/Super Nintendo/Donkey Kong Country 3 - Dixie Kong's Double Trouble.smc"
+				}
+			}
+		}
+	}
+}
