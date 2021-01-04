@@ -5,8 +5,13 @@
  @author    Díaz Urbaneja Víctor Eduardo Diex <victor.vector008@gmail.com>
  @date      21.07.2020 20:01:41 -04
 ]]
+package.path = package.path .. ';../?.lua'
 
-lgi = require('lgi')
+require 'lib.middleclass'
+json = require 'lib.json'
+config = require 'lib.configuration'
+
+lgi = require 'lgi'
 
 GObject = lgi.GObject
 GLib = lgi.GLib
@@ -19,6 +24,8 @@ local builder = Gtk.Builder()
 assert(builder:add_from_file('main_window.ui'), "ERROR: el archivo no existe")
 
 ui = builder.objects
+
+require('test.stack') -- esto es una prueba
 
 function ui.main_window:on_destroy()
 	Gtk.main_quit()
