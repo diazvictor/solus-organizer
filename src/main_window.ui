@@ -84,7 +84,9 @@
   </object>
   <object class="GtkListStore" id="gamelist">
     <columns>
-      <!-- column-name file -->
+      <!-- column-name # -->
+      <column type="gint"/>
+      <!-- column-name name -->
       <column type="gchararray"/>
       <!-- column-name time -->
       <column type="gchararray"/>
@@ -207,6 +209,23 @@
             <property name="position">1</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkButton" id="btn_test">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-execute</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
       </object>
     </child>
     <child>
@@ -240,7 +259,7 @@
                 <property name="margin_bottom">2</property>
                 <property name="shadow_type">in</property>
                 <child>
-                  <object class="GtkTreeView">
+                  <object class="GtkTreeView" id="gamelist_view">
                     <property name="height_request">220</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -253,7 +272,7 @@
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn">
-                        <property name="title" translatable="yes">FILE</property>
+                        <property name="title" translatable="yes">#</property>
                         <property name="expand">True</property>
                         <child>
                           <object class="GtkCellRendererText"/>
@@ -265,12 +284,24 @@
                     </child>
                     <child>
                       <object class="GtkTreeViewColumn">
-                        <property name="title" translatable="yes">LAST TIME</property>
+                        <property name="title" translatable="yes">NAME</property>
                         <property name="expand">True</property>
                         <child>
                           <object class="GtkCellRendererText"/>
                           <attributes>
                             <attribute name="text">1</attribute>
+                          </attributes>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkTreeViewColumn">
+                        <property name="title" translatable="yes">LAST TIME</property>
+                        <property name="expand">True</property>
+                        <child>
+                          <object class="GtkCellRendererText"/>
+                          <attributes>
+                            <attribute name="text">2</attribute>
                           </attributes>
                         </child>
                       </object>
@@ -298,7 +329,7 @@
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkLabel" id="info_name">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">Advance Wars</property>
@@ -338,7 +369,7 @@
                             <property name="label_xalign">0</property>
                             <property name="shadow_type">none</property>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkLabel" id="info_developer">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">start</property>
@@ -369,7 +400,7 @@
                             <property name="label_xalign">0</property>
                             <property name="shadow_type">none</property>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkLabel" id="info_genre">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">start</property>
@@ -381,7 +412,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">end</property>
-                                <property name="label" translatable="yes">Genero:</property>
+                                <property name="label" translatable="yes">Genero(s):</property>
                                 <attributes>
                                   <attribute name="weight" value="bold"/>
                                 </attributes>
@@ -413,7 +444,7 @@
                             <property name="label_xalign">0</property>
                             <property name="shadow_type">none</property>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkLabel" id="info_players">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">start</property>
@@ -424,7 +455,7 @@
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">Players:</property>
+                                <property name="label" translatable="yes">Player(s):</property>
                                 <attributes>
                                   <attribute name="weight" value="bold"/>
                                 </attributes>
@@ -444,7 +475,7 @@
                             <property name="label_xalign">0</property>
                             <property name="shadow_type">none</property>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkLabel" id="info_rating">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">start</property>
