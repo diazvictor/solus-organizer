@@ -9,6 +9,7 @@ package.path = package.path .. ';../?.lua'
 
 require 'lib.middleclass'
 json = require 'lib.json'
+utils = require 'lib.utils'
 config = require 'lib.configuration'
 
 lgi = require 'lgi'
