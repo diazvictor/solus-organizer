@@ -29,6 +29,7 @@ function utils:path_name(uri)
     return result
 end
 
+-- @author Díaz Urbaneja Víctor Eduardo Diex <victor.vector008@gmail.com>
 -- Example to string:Lorem ipsum dolor sit...
 function utils:truncate(str)
 	local t,s = {}, str
