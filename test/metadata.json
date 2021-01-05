@@ -2,7 +2,7 @@
 	"collection": {
 		"gba": {
 			"name": "GAME BOY ADVANCE",
-			"controller": "gba",
+			"shortened": "gba",
 			"launch": "/home/victor/Proyectos/GIT/mgba/sdl/mgba",
 			"files": {
 				"1": {
@@ -12,22 +12,25 @@
 					"genre": "Videojuego de estrategia",
 					"players": "4",
 					"rating": "97%",
-					"description": "Advance Wars es un videojuego de estrategia por turnos para Game Boy Advance, continuación de los serie de juegos Nintendo Wars aparecidos en anteriores sistemas Nintendo, tales como Famicom Wars, Super Famicom Wars y Game Boy Wars."
+					"description": "Advance Wars es un videojuego de estrategia por turnos para Game Boy Advance, continuación de los serie de juegos Nintendo Wars aparecidos en anteriores sistemas Nintendo, tales como Famicom Wars, Super Famicom Wars y Game Boy Wars.",
+					"last_time": "23:11"
 				}
 			}
 		},
 		"snes": {
 			"name": "SUPER NINTENDO",
-			"controller": "snes",
+			"shortened": "snes",
 			"launch": "/home/victor/Proyectos/GIT/snes9x/gtk/snes9x-gtk",
 			"files": {
 				"1": {
 					"title": "Super Mario World",
-					"file": "/home/victor/Documentos/Roms/Super Nintendo/Super Mario World.smc"
+					"file": "/home/victor/Documentos/Roms/Super Nintendo/Super Mario World.smc",
+					"last_time": "21:34"
 				},
 				"2": {
 					"title": "Donkey Kong Country 3 - Dixie Kong's Double Trouble",
-					"file": "/home/victor/Documentos/Roms/Super Nintendo/Donkey Kong Country 3 - Dixie Kong's Double Trouble.sfc"
+					"file": "/home/victor/Documentos/Roms/Super Nintendo/Donkey Kong Country 3 - Dixie Kong's Double Trouble.sfc",
+					"last_time": "17:51"
 				}
 			}
 		}
