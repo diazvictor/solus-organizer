@@ -1,9 +1,9 @@
 --[[--
  @package   Solus Frontend
  @filename  stack.lua
- @version   1.0
+ @version   1.6
  @author    Díaz Urbaneja Víctor Eduardo Diex <victor.vector008@gmail.com>
- @date      21.07.2020 21:47:57 -04
+ @date      04.01.2021 20:54:35 -04
 ]]
 
 configdir = '../test/metadata.json'
@@ -36,15 +36,58 @@ local populate_gamelist = function ()
 	ui.gamelist:clear()
 	for controller,_ in pairs(metadata.collection) do
 		if ui.sidebar.child[controller]:is_selected() == true then
-			for _,item in pairs(metadata.collection[controller]['files']) do
+			-- @TODO: variable global mal situada
+			currentCollection = controller -- aprovecho y guardo la collection el que estoy actualmente situado
+			for num,item in pairs(metadata.collection[controller]['files']) do
 				ui.gamelist:append({
-					item.game,
-					-- @TODO: variable para mostrar la ultima vez que se ejecuto
-					os.date('%H:%M:%S')
+					num, -- ID
+					item.title, -- NAME
+					os.date('%H:%M:%S') -- @TODO: variable para mostrar la ultima vez que se ejecuto
 				})
 			end
 		end
 	end
+end
+
+-- retorno el id de una columna seleccionada
+local get_row_id = function ()
+	local selection = ui.gamelist_view:get_selection()
+	selection.mode = 'SINGLE'
+	local model, iter = selection:get_selected()
+	if model and iter then
+		id_row = model:get_value(iter, 0):get_int()
+		-- local item_name = model:get_value(iter, 1):get_string()
+		return id_row
+	end
+end
+
+-- retorno una tabla con la información de la columna seleccionada
+local get_row_info = function ()
+	local id = tostring(get_row_id())
+	local info = {}
+	info.collection, info.launch = metadata.collection[currentCollection]['controller'], metadata.collection[currentCollection]['launch']
+	for key,value in pairs(metadata.collection[currentCollection]['files'][id]) do
+		info[key] = value
+	end
+	return info
+end
+
+-- al hacer click en una columna
+ui.gamelist_view['on_row_activated'] = function ()
+	local info = get_row_info()
+	ui.info_name.label = utils:truncate(info.title) or 'null'
+	ui.info_developer.label = info.developer or 'null'
+	ui.info_genre.label = info.genre or 'null'
+	ui.info_players.label = info.players or 'null'
+	ui.info_rating.label = info.rating or 'null'
+	ui.section:set_visible_child_name('page_information')
+end
+
+-- al hacer click en el botón LAUNCH!
+ui.btn_launch['on_clicked'] = function ()
+	local info = get_row_info()
+	local command = ('"%s" "%s" &'):format(info.launch, info.file)
+	os.execute(command)
 end
 
 ui.sidebar['on_row_activated'] = function ()
@@ -54,6 +97,7 @@ end
 -- @TODO: hacer un metodo para volver a la pagina anterior
 ui.btn_back['on_clicked'] = function ()
 	ui.section:set_visible_child_name('page_list')
+	populate_gamelist()
 end
 
 -- @TODO: con esto hare un bucle interador para la lista de juegos
