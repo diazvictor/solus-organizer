@@ -86,6 +86,20 @@
       </object>
     </child>
   </object>
+  <object class="GtkAdjustment" id="range_max_players">
+    <property name="lower">1</property>
+    <property name="upper">12</property>
+    <property name="step_increment">5</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="range_ratings">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkTextBuffer" id="textbuffer_description_game"/>
+  <object class="GtkTextBuffer" id="textbuffer_launch_collection"/>
+  <object class="GtkTextBuffer" id="textbuffer_summary_game"/>
   <object class="GtkWindow" id="main_window">
     <property name="can_focus">False</property>
     <property name="window_position">center</property>
@@ -607,6 +621,7 @@
                           <object class="GtkTextView" id="textview_launch_collection">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="buffer">textbuffer_launch_collection</property>
                           </object>
                         </child>
                       </object>
@@ -742,9 +757,10 @@
                         <property name="can_focus">True</property>
                         <property name="shadow_type">in</property>
                         <child>
-                          <object class="GtkTextView" id="textview_shortened_game">
+                          <object class="GtkTextView" id="textview_summary_game">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="buffer">textbuffer_summary_game</property>
                           </object>
                         </child>
                       </object>
@@ -782,6 +798,7 @@
                           <object class="GtkTextView" id="textview_description_game">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="buffer">textbuffer_description_game</property>
                           </object>
                         </child>
                       </object>
@@ -982,7 +999,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btn_new_game1">
+                      <object class="GtkButton" id="btn_save_collection_game">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
@@ -1023,16 +1040,5 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="range_max_players">
-    <property name="lower">1</property>
-    <property name="upper">12</property>
-    <property name="step_increment">5</property>
-    <property name="page_increment">10</property>
-  </object>
-  <object class="GtkAdjustment" id="range_ratings">
-    <property name="upper">100</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
   </object>
 </interface>
