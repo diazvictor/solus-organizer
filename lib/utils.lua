@@ -29,4 +29,21 @@ function utils:path_name(uri)
     return result
 end
 
+-- Example to string:Lorem ipsum dolor sit...
+function utils:truncate(str)
+	local t,s = {}, str
+	if #str > 21 then
+		for w in string.gmatch(str, ".") do
+			table.insert(t, w)
+			if #t > 20 then
+				break
+			end
+		end
+		s = ('%s...'):format(table.concat(t))
+		return s
+	else
+		return s
+	end
+end
+
 return utils
