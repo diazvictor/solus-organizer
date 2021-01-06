@@ -43,7 +43,7 @@ update_collection_name = function ()
 end
 
 -- añado los items al treeview (gamelist)
-local populate_gamelist = function ()
+populate_gamelist = function ()
 	ui.gamelist:clear()
 	for shortened,_ in pairs(metadata.collection) do
 		if ui.sidebar.child[shortened]:is_selected() == true then
@@ -74,10 +74,10 @@ end
 
 -- retorno una tabla con la información de la columna seleccionada
 get_row_info = function ()
-	local id = tostring(get_row_id())
+	local id_row = get_row_id()
 	local info = {}
 	info.collection, info.name, info.launch = metadata.collection[currentCollection]['shortened'], metadata.collection[currentCollection]['name'], metadata.collection[currentCollection]['launch']
-	for key,value in pairs(metadata.collection[currentCollection]['files'][id]) do
+	for key,value in pairs(metadata.collection[currentCollection]['files'][id_row]) do
 		info[key] = value
 	end
 	return info
@@ -86,9 +86,9 @@ end
 -- al hacer click en una columna
 ui.gamelist_view['on_row_activated'] = function ()
 	local info = get_row_info()
-	ui.info_name.label = utils:truncate(info.title) or 'null'
-	ui.info_developer.label = info.developer or 'null'
-	ui.info_genre.label = info.genre or 'null'
+	ui.info_name.label = utils:truncate(info.title, 31) or 'null'
+	ui.info_developer.label = utils:truncate(info.developer, 37) or 'null'
+	ui.info_genre.label = utils:truncate(info.genre, 37) or 'null'
 	ui.info_players.label = info.players or 'null'
 	ui.info_rating.label = info.rating or 'null'
 	ui.section:set_visible_child_name('page_information')
@@ -108,14 +108,51 @@ ui.sidebar['on_row_activated'] = function ()
 	populate_gamelist()
 end
 
+function ui.gamelist_view:on_button_press_event(event)
+	local x = tonumber(event.x)
+	local y = tonumber(event.y)
+	local pthinfo = self:get_path_at_pos(x, y)
+	if (pthinfo and event.type == 'BUTTON_PRESS' and event.button == 3) then
+		local id_row = get_row_id()
+		local menu = Gtk.Menu {
+			Gtk.ImageMenuItem {
+				id = "edit",
+				label = "Editar",
+				image = Gtk.Image {
+					stock = "gtk-edit"
+				},
+				on_activate = function()
+					edit_game_info(id_row)
+				end
+			},
+			Gtk.SeparatorMenuItem {},
+			Gtk.ImageMenuItem {
+				id = "delete",
+				label = "Borrar",
+				image = Gtk.Image {
+					stock = "gtk-delete"
+				},
+				on_activate = function()
+					delete_game_info(id_row)
+				end
+			}
+		}
+		if id_row then
+			menu:attach_to_widget(ui.gamelist_view, null)
+			menu:show_all()
+			menu:popup(nil, nil, nil, event.button, event.time)
+		end
+	end
+end
+
 -- @TODO: hacer un metodo para volver a la pagina anterior
 ui.btn_back_information['on_clicked'] = function ()
 	ui.section:set_visible_child_name('page_list')
 	populate_gamelist()
 end
 
-ui.btn_back_game['on_clicked'] = function ()
-	ui.section:set_visible_child_name('page_new_collections')
+ui.btn_back_page_list['on_clicked'] = function ()
+	ui.section:set_visible_child_name('page_list')
 	populate_gamelist()
 end
 
@@ -142,9 +179,8 @@ end
 	-- ui.section:add_titled(widget, id, name)
 -- end
 
-function ui.btn_new_game:on_clicked()
-	ui.section:set_visible_child_name('page_new_game')
-end
+-- @TODO: organizar el codigo, ademas de guardar la información
+-- de la game_page y buscar una forma de crear colecciones y games
 
 -- function ui.btn_save_metadata:on_clicked()
 	-- if ui.entry_aftername_metadata.text ~= '' and ui.entry_firstname_metadata.text ~= '' then
