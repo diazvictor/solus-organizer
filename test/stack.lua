@@ -11,6 +11,13 @@ metadata = config:load(configdir)
 currentCollection = ''
 
 -- añado los items al sidebar
+-- @TODO: refrescar el sidebar
+clear_collection = function ()
+	for name,_ in pairs(metadata.collection) do
+		ui.sidebar:remove(ui.sidebar.child[name])
+	end
+end
+
 populate_collection = function ()
 	for shortened,value in pairs(metadata.collection) do
 		for _,name in pairs(metadata.collection[shortened]) do
