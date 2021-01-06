@@ -8,6 +8,7 @@
 
 configdir = '../test/metadata.json'
 metadata = config:load(configdir)
+currentCollection = ''
 
 -- añado los items al sidebar
 populate_collection = function ()
@@ -104,8 +105,24 @@ end
 -- actualizo el treeview (gamelist) por cada click
 -- que le haga a un item del sidebar
 ui.sidebar['on_row_activated'] = function ()
-	ui.section:set_visible_child_name('page_list')
-	populate_gamelist()
+	if ui.section:get_visible_child_name() == 'page_list' then
+		ui.section:set_visible_child_name('page_list')
+		populate_gamelist()
+	elseif ui.section:get_visible_child_name() == 'page_new_collection' then
+		for shortened,_ in pairs(metadata.collection) do
+			if ui.sidebar.child[shortened]:is_selected() == true then
+				currentCollection = shortened
+			end
+		end
+		update_collection_info(currentCollection)
+	elseif ui.section:get_visible_child_name() == 'page_new_game' then
+		for shortened,_ in pairs(metadata.collection) do
+			if ui.sidebar.child[shortened]:is_selected() == true then
+				currentCollection = shortened
+			end
+		end
+		print(currentCollection)
+	end
 end
 
 function ui.gamelist_view:on_button_press_event(event)
