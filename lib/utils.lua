@@ -31,12 +31,12 @@ end
 
 -- @author Díaz Urbaneja Víctor Eduardo Diex <victor.vector008@gmail.com>
 -- Example to string:Lorem ipsum dolor sit...
-function utils:truncate(str)
+function utils:truncate(str, letter)
 	local t,s = {}, str
-	if #str > 21 then
+	if #str > letter then
 		for w in string.gmatch(str, ".") do
 			table.insert(t, w)
-			if #t > 20 then
+			if #t > letter then
 				break
 			end
 		end
