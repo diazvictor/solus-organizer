@@ -27,7 +27,9 @@ assert(builder:add_from_file('main_window.ui'), "ERROR: el archivo no existe")
 ui = builder.objects
 
 require('test.stack') -- esto es una prueba
-require('test.collections') -- esto es una prueba
+require('test.new_collection')
+require('test.edit_game')
+require('test.new_game')
 
 function ui.main_window:on_destroy()
 	Gtk.main_quit()
