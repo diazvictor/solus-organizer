@@ -127,7 +127,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="btn_new_collections">
+          <object class="GtkButton" id="btn_new_info">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -187,10 +187,10 @@
               <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="margin_left">15</property>
-                <property name="margin_right">15</property>
-                <property name="margin_top">15</property>
-                <property name="margin_bottom">15</property>
+                <property name="margin_left">10</property>
+                <property name="margin_right">10</property>
+                <property name="margin_top">10</property>
+                <property name="margin_bottom">10</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTreeView" id="gamelist_view">
@@ -256,7 +256,7 @@
                 <property name="margin_top">15</property>
                 <property name="margin_bottom">15</property>
                 <property name="orientation">vertical</property>
-                <property name="spacing">15</property>
+                <property name="spacing">10</property>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
@@ -266,10 +266,11 @@
                       <object class="GtkLabel" id="info_name">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Advance Wars</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Null</property>
                         <attributes>
                           <attribute name="weight" value="bold"/>
-                          <attribute name="scale" value="4"/>
+                          <attribute name="scale" value="3"/>
                         </attributes>
                       </object>
                       <packing>
@@ -307,7 +308,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">Intelligent Games</property>
+                                <property name="label" translatable="yes">null</property>
                               </object>
                             </child>
                             <child type="label">
@@ -339,7 +340,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">Videojuego de estrategia</property>
+                                <property name="label" translatable="yes">null</property>
                               </object>
                             </child>
                             <child type="label">
@@ -384,7 +385,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">4 players</property>
+                                <property name="label" translatable="yes">null</property>
                               </object>
                             </child>
                             <child type="label">
@@ -416,7 +417,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="halign">start</property>
-                                <property name="label" translatable="yes">97%</property>
+                                <property name="label" translatable="yes">null</property>
                               </object>
                             </child>
                             <child type="label">
@@ -545,7 +546,7 @@
                 <property name="margin_top">15</property>
                 <property name="margin_bottom">15</property>
                 <property name="orientation">vertical</property>
-                <property name="spacing">15</property>
+                <property name="spacing">10</property>
                 <child>
                   <object class="GtkFrame">
                     <property name="visible">True</property>
@@ -650,7 +651,7 @@
                     <property name="can_focus">False</property>
                     <property name="spacing">2</property>
                     <child>
-                      <object class="GtkButton" id="btn_back_collections">
+                      <object class="GtkButton" id="btn_back_page_list">
                         <property name="height_request">79</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -672,7 +673,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btn_new_game">
+                      <object class="GtkButton" id="btn_save_collection">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
@@ -681,7 +682,7 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="stock">gtk-go-forward</property>
+                            <property name="stock">gtk-save</property>
                             <property name="icon_size">6</property>
                           </object>
                         </child>
@@ -701,7 +702,7 @@
                 </child>
               </object>
               <packing>
-                <property name="name">page_new_collections</property>
+                <property name="name">page_new_collection</property>
                 <property name="position">2</property>
               </packing>
             </child>
@@ -714,7 +715,7 @@
                 <property name="margin_top">15</property>
                 <property name="margin_bottom">15</property>
                 <property name="orientation">vertical</property>
-                <property name="spacing">15</property>
+                <property name="spacing">10</property>
                 <child>
                   <object class="GtkFrame">
                     <property name="visible">True</property>
@@ -819,6 +820,79 @@
                     <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="spacing">16</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label_xalign">0</property>
+                        <property name="shadow_type">none</property>
+                        <child>
+                          <object class="GtkEntry" id="entry_developer_game">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="margin_bottom">2</property>
+                            <property name="label" translatable="yes">Developer:</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label_xalign">0</property>
+                        <property name="shadow_type">none</property>
+                        <child>
+                          <object class="GtkEntry" id="entry_genre_game">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="margin_bottom">2</property>
+                            <property name="label" translatable="yes">Genero:</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
                 <child>
@@ -937,7 +1011,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">3</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
                 <child>
@@ -968,7 +1042,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">4</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
                 <child>
@@ -977,7 +1051,7 @@
                     <property name="can_focus">False</property>
                     <property name="spacing">2</property>
                     <child>
-                      <object class="GtkButton" id="btn_back_game">
+                      <object class="GtkButton" id="btn_back_collection">
                         <property name="height_request">79</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -999,7 +1073,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btn_save_collection_game">
+                      <object class="GtkButton" id="btn_save_game">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
