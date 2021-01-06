@@ -72,6 +72,6 @@ end
 
 ui.btn_back_collection['on_clicked'] = function ()
 	ui.section:set_visible_child_name('page_new_collection')
-	update_collection_info()
+	update_collection_info(currentCollection)
 	clear_game_info()
 end
