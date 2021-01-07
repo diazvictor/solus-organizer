@@ -34,5 +34,5 @@ edit_game_info = function (id_row)
 
 	ui.section:set_visible_child_name('page_new_game')
 	route = 'edit_game'
-	ui.header.title = 'Solus Frontend - Edit Game #' .. id_row
+	ui.header.subtitle = 'Edit Game #' .. id_row .. ' of ' .. string.upper(currentCollection)
 end

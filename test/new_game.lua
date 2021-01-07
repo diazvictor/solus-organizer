@@ -8,6 +8,7 @@
 
 -- botón de pruebas
 ui.btn_test['on_clicked'] = function ()
+	print(route, currentCollection)
 end
 
 validate_game_info = function ()

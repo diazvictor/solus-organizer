@@ -10,14 +10,8 @@ configdir = '../test/metadata.json'
 metadata = config:load(configdir)
 currentCollection = ''
 
--- añado los items al sidebar
 -- @TODO: refrescar el sidebar
-clear_collection = function ()
-	for name,_ in pairs(metadata.collection) do
-		ui.sidebar:remove(ui.sidebar.child[name])
-	end
-end
-
+-- añado los items al sidebar
 populate_collection = function ()
 	for shortened,value in pairs(metadata.collection) do
 		for _,name in pairs(metadata.collection[shortened]) do
@@ -29,7 +23,9 @@ populate_collection = function ()
 							id = shortened .. '_label',
 							label = name,
 							halign = 1,
-							height_request = 20,
+							height_request = 30,
+							margin_left = 10,
+							margin_right = 10
 						}
 					}
 				)
@@ -100,6 +96,7 @@ ui.gamelist_view['on_row_activated'] = function ()
 	ui.info_players.label = info.players or 'null'
 	ui.info_rating.label = info.rating or 'null'
 	ui.section:set_visible_child_name('page_information')
+	ui.header.subtitle = 'Information of ' .. ui.info_name.label
 end
 
 -- al hacer click en el botón LAUNCH!
@@ -115,6 +112,7 @@ ui.sidebar['on_row_activated'] = function ()
 	if ui.section:get_visible_child_name() == 'page_list' then
 		ui.section:set_visible_child_name('page_list')
 		populate_gamelist()
+		ui.header.subtitle = 'Game list of ' .. string.upper(currentCollection)
 	elseif ui.section:get_visible_child_name() == 'page_new_collection' then
 		for shortened,_ in pairs(metadata.collection) do
 			if ui.sidebar.child[shortened]:is_selected() == true then
@@ -122,6 +120,7 @@ ui.sidebar['on_row_activated'] = function ()
 			end
 		end
 		update_collection_info(currentCollection)
+		ui.header.subtitle = 'Edit Collection ' .. string.upper(currentCollection)
 	elseif ui.section:get_visible_child_name() == 'page_new_game' then
 		for shortened,_ in pairs(metadata.collection) do
 			if ui.sidebar.child[shortened]:is_selected() == true then
@@ -129,6 +128,7 @@ ui.sidebar['on_row_activated'] = function ()
 			end
 		end
 		print(currentCollection)
+		ui.header.subtitle = 'New Game'
 	end
 end
 
@@ -173,11 +173,13 @@ end
 ui.btn_back_information['on_clicked'] = function ()
 	ui.section:set_visible_child_name('page_list')
 	populate_gamelist()
+	ui.header.subtitle = 'Game list of ' .. string.upper(currentCollection)
 end
 
 ui.btn_back_page_list['on_clicked'] = function ()
 	ui.section:set_visible_child_name('page_list')
 	populate_gamelist()
+	ui.header.subtitle = 'Game list of ' .. string.upper(currentCollection)
 end
 
 -- @TODO: con esto hare un bucle interador para la lista de juegos
