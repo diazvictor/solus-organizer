@@ -96,9 +96,9 @@ end
 -- al hacer click en una columna
 ui.gamelist_view['on_row_activated'] = function ()
 	local info = get_row_info()
-	ui.info_name.label = utils:truncate(info.title, 31) or 'null'
-	ui.info_developer.label = utils:truncate(info.developer, 37) or 'null'
-	ui.info_genre.label = utils:truncate(info.genre, 37) or 'null'
+	ui.info_name.label = info.title or 'null'
+	ui.info_developer.label = info.developer or 'null'
+	ui.info_genre.label = info.genre or 'null'
 	ui.info_players.label = info.players or 'null'
 	ui.info_rating.label = info.rating or 'null'
 	ui.section:set_visible_child_name('page_information')
@@ -115,7 +115,9 @@ end
 -- actualizo el treeview (gamelist) por cada click
 -- que le haga a un item del sidebar
 ui.sidebar['on_row_activated'] = function ()
-	if ui.section:get_visible_child_name() == 'page_list' then
+	if ui.section:get_visible_child_name() == 'page_list'
+		or ui.section:get_visible_child_name() == 'page_information'
+	then
 		ui.section:set_visible_child_name('page_list')
 		populate_gamelist()
 		ui.header.subtitle = 'Game list of ' .. string.upper(currentCollection)
