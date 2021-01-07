@@ -13,10 +13,20 @@ clear_collection_info = function ()
 end
 
 update_collection_info = function (collectionName)
-	ui.entry_name_collection.text = metadata.collection[collectionName]['name']
-	ui.entry_shortened_collection.text = metadata.collection[collectionName]['shortened']
-	ui.textbuffer_launch_collection.text = metadata.collection[collectionName]['launch']
-	route = 'edit_collection'
+	if collectionName ~= '' then
+		ui.entry_name_collection.text = metadata.collection[collectionName]['name']
+		ui.entry_shortened_collection.text = metadata.collection[collectionName]['shortened']
+		ui.textbuffer_launch_collection.text = metadata.collection[collectionName]['launch']
+		route = 'edit_collection'
+		ui.header.subtitle = 'Edit Collection ' .. string.upper(currentCollection)
+		return true
+	end
+	ui.entry_name_collection.text = ''
+	ui.entry_shortened_collection.text = ''
+	ui.textbuffer_launch_collection.text = ''
+	route = 'new_collection'
+	ui.header.subtitle = 'New Collection'
+	return false
 end
 
 edit_collection_info = function ()
@@ -26,7 +36,7 @@ edit_collection_info = function ()
 
 	ui.section:set_visible_child_name('page_new_game')
 	route = 'new_game'
-	ui.header.title = 'Solus Frontend - New Game'
+	ui.header.subtitle = 'New Game'
 end
 
 set_collection_info = function ()
@@ -38,7 +48,7 @@ set_collection_info = function ()
 	}
 	ui.section:set_visible_child_name('page_new_game')
 	route = 'new_game'
-	ui.header.title = 'Solus Frontend - New Game'
+	ui.header.subtitle = 'New Game'
 end
 
 validate_collection_info = function ()
@@ -77,11 +87,10 @@ save_collection_info = function ()
 			set_collection_info()
 		end
 		config:save(configdir, metadata)
-		populate_collection()
 	else
 		ui.section:set_visible_child_name('page_new_game')
 		route = 'new_game'
-		ui.header.title = 'Solus Frontend - New Game'
+		ui.header.subtitle = 'New Game'
 	end
 	print(msg)
 end
@@ -94,7 +103,9 @@ end
 function ui.btn_new_info:on_clicked()
 	ui.section:set_visible_child_name('page_new_collection')
 	route = 'new_collection'
+	ui.header.subtitle = 'New Collection'
 	currentCollection = ''
+	clear_collection_info()
 end
 
 -- volver a page_list
@@ -102,4 +113,5 @@ ui.btn_back_page_list['on_clicked'] = function ()
 	ui.section:set_visible_child_name('page_list')
 	clear_collection_info()
 	populate_gamelist()
+	ui.header.subtitle = 'Game list of ' .. string.upper(currentCollection)
 end
