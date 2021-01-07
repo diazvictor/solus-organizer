@@ -52,7 +52,7 @@ set_collection_info = function ()
 		visible = true,
 		Gtk.Label {
 			id = ui.entry_shortened_collection.text .. '_label',
-			label = ui.entry_shortened_collection.text,
+			label = ui.entry_name_collection.text,
 			halign = 1,
 			height_request = 30,
 			margin_left = 10,
