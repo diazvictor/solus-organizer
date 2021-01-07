@@ -46,6 +46,20 @@ set_collection_info = function ()
 		launch = ui.textbuffer_launch_collection.text,
 		files = {}
 	}
+	local i = get_position_table(metadata.collection) + 1
+	ui.sidebar:insert(Gtk.ListBoxRow {
+		id = ui.entry_shortened_collection.text,
+		visible = true,
+		Gtk.Label {
+			id = ui.entry_shortened_collection.text .. '_label',
+			label = ui.entry_shortened_collection.text,
+			halign = 1,
+			height_request = 30,
+			margin_left = 10,
+			margin_right = 10,
+			visible = true
+		}
+	}, i)
 	ui.section:set_visible_child_name('page_new_game')
 	route = 'new_game'
 	ui.header.subtitle = 'New Game'
