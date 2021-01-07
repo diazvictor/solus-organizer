@@ -10,25 +10,31 @@ configdir = '../test/metadata.json'
 metadata = config:load(configdir)
 currentCollection = ''
 
--- @TODO: refrescar el sidebar
+get_position_table = function (t)
+	local i = 0
+	for k,v in pairs(t) do
+		i = i + 1
+	end
+	return i
+end
+
 -- añado los items al sidebar
 populate_collection = function ()
+	local i = get_position_table(metadata.collection)
 	for shortened,value in pairs(metadata.collection) do
 		for _,name in pairs(metadata.collection[shortened]) do
 			if _ == 'name' then
-				ui.sidebar:prepend(
-					Gtk.ListBoxRow {
-						id = shortened,
-						Gtk.Label {
-							id = shortened .. '_label',
-							label = name,
-							halign = 1,
-							height_request = 30,
-							margin_left = 10,
-							margin_right = 10
-						}
+				ui.sidebar:insert(Gtk.ListBoxRow {
+					id = shortened,
+					Gtk.Label {
+						id = shortened .. '_label',
+						label = name,
+						halign = 1,
+						height_request = 30,
+						margin_left = 10,
+						margin_right = 10
 					}
-				)
+				}, i)
 			end
 		end
 	end
