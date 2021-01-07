@@ -2,19 +2,37 @@
   "collection": {
     "gba": {
       "files": [],
-      "launch": "",
-      "name": "",
-      "shortened": ""
+      "launch": "mgba-qt",
+      "name": "GAME BOY ADVANCE",
+      "shortened": "gba"
     },
     "md": {
       "files": [],
-      "launch": "~/Proyectos/retroarch -L ~/.config/retroarch/cores/genesis_plus_gx_libretro.so",
-      "name": "MEGA DRIVE",
+      "launch": "blastem",
+      "name": "SEGA GENESIS",
       "shortened": "md"
+    },
+    "ngo": {
+      "files": [],
+      "launch": "gngeo",
+      "name": "NEO GEO",
+      "shortened": "ngo"
+    },
+    "playstation": {
+      "files": [],
+      "launch": "pcsxr",
+      "name": "PLAYSTATION",
+      "shortened": "playstation"
+    },
+    "psp": {
+      "files": [],
+      "launch": "PPSSPPQt",
+      "name": "PLAYSTATION PORTABLE",
+      "shortened": "psp"
     },
     "snes": {
       "files": [],
-      "launch": "/home/victor/Proyectos/GIT/snes9x/gtk/snes9x-gtk",
+      "launch": "snes9x-gtk",
       "name": "SUPER NINTENDO",
       "shortened": "snes"
     }
