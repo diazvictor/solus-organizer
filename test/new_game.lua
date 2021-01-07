@@ -25,8 +25,10 @@ clear_game_info = function ()
 	ui.entry_title_game.text = ''
 	ui.textbuffer_summary_game.text = ''
 	ui.textbuffer_description_game.text = ''
+	ui.entry_developer_game.text = ''
+	ui.entry_genre_game.text = ''
 	ui.file_chooser_game:set_filename('')
-	ui.range_max_players:set_value(0)
+	ui.range_max_players:set_value(1)
 	ui.range_ratings:set_value(0)
 end
 
