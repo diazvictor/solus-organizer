@@ -4,9 +4,27 @@
 metadata = {
 	collection = {
 		gba = {
-			name = "GAME BOY ADVANCE",
-			shortened = "gba",
-			launch = "/home/victor/Proyectos/GIT/mgba/sdl/mgba",
+			name = "null",
+			shortened = "null",
+			launch = "null",
+			files = {
+				{},
+				{}
+			}
+		},
+		snes = {
+			name = "null",
+			shortened = "null",
+			launch = "null",
+			files = {
+				{},
+				{}
+			}
+		},
+		md = {
+			name = "null",
+			shortened = "null",
+			launch = "null",
 			files = {
 				{},
 				{}
@@ -14,11 +32,14 @@ metadata = {
 		}
 	}
 }
-print(#metadata['collection']['gba']['files'])
--- print(id_row)
-
--- for i, v in pairs(metadata.gba) do
-    -- print(i, v)
--- end
-
--- return config
+-- metadata.collection['md'] = {
+	-- name = "SEGA GENESIS",
+	-- shortened = "md",
+	-- launch = "ss",
+	-- files = {}
+-- }
+local i = 0
+for k,v in pairs(metadata.collection) do
+	i = i + 1
+	print(i)
+end
