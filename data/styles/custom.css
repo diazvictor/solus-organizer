@@ -1,0 +1,117 @@
+/**!
+ * @package   Solus Frontend
+ * @filename  custom.css
+ * @version   1.0
+ * @author    Díaz Urbaneja Víctor Eduardo Diex <victor.vector008@gmail.com>
+ * @date      07.01.2021 19:20:36 -04
+ */
+
+* {
+    outline: 0;
+}
+/* HEADERBAR */
+headerbar {
+    background: #2C3234;
+    border-bottom: 1px solid #191D1F;
+}
+headerbar button {
+    background: #232729;
+    box-shadow: none;
+    border-color: #191D1F;
+}
+headerbar button:active {
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.25);
+}
+headerbar button image {
+    -gtk-icon-shadow: none;
+    color: #FFFFFF;
+}
+headerbar separator {
+    background: #232729;
+}
+headerbar box:last-child button {
+    background: #2C3234;
+    color: #FFFFFF;
+    border-color: #2C3234;
+    box-shadow: none;
+}
+headerbar box:last-child button:hover {
+    background: #232729;
+    border-color: #191D1F;
+}
+headerbar box:last-child button:active {
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.25);
+}
+/* MENU */
+popover {
+    background: #232729;
+    border: 1px solid #191D1F;
+}
+popover modelbutton:hover {
+    background: #191D1F;
+}
+popover label {
+    color: #777777;
+}
+/* BODY */
+stack {
+    background: #232729;
+}
+scrolledwindow {
+    border: none;
+}
+flowboxchild {
+    border-radius: 5px;
+    color: #555555;
+    border: 1px solid #232729;
+}
+flowboxchild:selected {
+    background: #2C3234;
+    transition: all 0.25s ease-in-out;
+    border: 2px solid #191D1F;
+/*
+    box-shadow: 0 0 8px #191D1F;
+*/
+    color: #FFFFFF;
+}
+flowboxchild label {
+    font-size: 15px;
+}
+/* page_info label of desc */
+stack stack box stack box stack {
+    background: #2C3234;
+}
+stack stack box stack box stack label {
+    color: #FFFFFF;
+    font-size: 15px;
+}
+stack stack box stack box list row {
+    background: #232729;
+    color: #555;
+}
+stack stack box stack box list row:selected {
+    background: #2C3234;
+    color: #FFFFFF;
+    transition: all 0.25s ease-in-out;
+}
+stack stack box box button {
+    border-radius: 0px;
+    background: #232729;
+    box-shadow: none;
+    border-color: #191D1F;
+}
+stack stack box box button:active {
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.25);
+}
+stack stack box box button image {
+    -gtk-icon-shadow: none;
+}
+stack stack box box button:nth-child(1) image {
+    color: #FFFFFF;
+}
+stack stack box box button:nth-child(2) image {
+    color: #FF4433;
+}
+stack stack box box button:nth-child(3) image {
+    color: #22CC44;
+}
