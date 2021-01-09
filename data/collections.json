@@ -1,0 +1,57 @@
+{
+  "collection": {
+    "gba": {
+      "files": [ {
+        "description": "",
+        "developer": "",
+        "file": "/home/victor/Documentos/Golden _Sun_GBA.gba",
+        "genre": "",
+        "last_time": "00:00",
+        "players": 0,
+        "rating": 0,
+        "title": "sss"
+      } ],
+      "launch": "mgba-qt",
+      "name": "GAME BOY ADVANCE",
+      "shortened": "gba"
+    },
+    "md": {
+      "files": [],
+      "launch": "blastem",
+      "name": "SEGA GENESIS",
+      "shortened": "md"
+    },
+    "ngo": {
+      "files": [],
+      "launch": "gngeo",
+      "name": "NEO GEO",
+      "shortened": "ngo"
+    },
+    "playstation": {
+      "files": [],
+      "launch": "pcsxr",
+      "name": "PLAYSTATION",
+      "shortened": "playstation"
+    },
+    "psp": {
+      "files": [ {
+        "description": "",
+        "developer": "",
+        "genre": "",
+        "last_time": "00:00",
+        "players": 0,
+        "rating": 0,
+        "title": "sss"
+      } ],
+      "launch": "PPSSPPQt",
+      "name": "PLAYSTATION PORTABLE",
+      "shortened": "psp"
+    },
+    "snes": {
+      "files": [],
+      "launch": "snes9x-gtk",
+      "name": "SUPER NINTENDO",
+      "shortened": "snes"
+    }
+  }
+}
