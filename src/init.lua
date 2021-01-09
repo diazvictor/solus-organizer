@@ -5,31 +5,31 @@
  @author    Díaz Urbaneja Víctor Eduardo Diex <victor.vector008@gmail.com>
  @date      21.07.2020 20:01:41 -04
 ]]
-package.path = package.path .. ';../?.lua'
 
-require 'lib.middleclass'
-json = require 'lib.json'
-utils = require 'lib.utils'
-config = require 'lib.configuration'
+package.path = package.path .. ';../lib/?.lua'
 
+print("Loading libraries:")
 lgi = require 'lgi'
+print("| 'lgi' loaded successfully. (Thanks Pavouk!)")
 
 GObject = lgi.GObject
 GLib = lgi.GLib
 Gtk = lgi.require('Gtk', '3.0')
 GdkPixbuf = lgi.GdkPixbuf
 
+require 'solus'
+print("Libraries loaded!\n")
+
 assert = lgi.assert
 local builder = Gtk.Builder()
 
-assert(builder:add_from_file('main_window.ui'), "ERROR: el archivo no existe")
+assert(builder:add_from_file('../data/gtk/main_window.ui'), "ERROR: el archivo no existe")
 
 ui = builder.objects
 
-require('test.stack') -- esto es una prueba
-require('test.new_collection')
-require('test.edit_game')
-require('test.new_game')
+require('gamelist') -- show game list
+require('collection') -- new/edit collection
+require('game') -- new/edit game
 
 function ui.main_window:on_destroy()
 	Gtk.main_quit()
