@@ -26,8 +26,6 @@ local builder = Gtk.Builder()
 assert(builder:add_from_file('../data/gtk/main_window.ui'), 'ERROR: the file does not exist')
 ui = builder.objects
 
-ui.main_window.title = 'Solus Frontend'
-
 ui.head:pack_end(Gtk.Box {
 	orientation = 'HORIZONTAL',
 	spacing = 6,
@@ -46,6 +44,9 @@ ui.head:pack_end(Gtk.Box {
 }, false, false, 0)
 
 ui.head.child.btn_menu:set_popover(ui.menu)
+
+require 'gamelist'
+require 'gameinfo'
 
 function ui.main_window:on_destroy()
 	db:close()
