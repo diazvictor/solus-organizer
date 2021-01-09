@@ -10,36 +10,36 @@
     outline: 0;
 }
 /* HEADERBAR */
-headerbar {
+headerbar.bg-dark {
     background: #2C3234;
     border-bottom: 1px solid #191D1F;
 }
-headerbar button {
+headerbar.bg-dark button {
     background: #232729;
     box-shadow: none;
     border-color: #191D1F;
 }
-headerbar button:active {
+headerbar.bg-dark button:active {
     box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.25);
 }
-headerbar button image {
+headerbar.bg-dark button image {
     -gtk-icon-shadow: none;
     color: #FFFFFF;
 }
-headerbar separator {
+headerbar.bg-dark separator {
     background: #232729;
 }
-headerbar box:last-child button {
+headerbar.bg-dark box:last-child button {
     background: #2C3234;
     color: #FFFFFF;
     border-color: #2C3234;
     box-shadow: none;
 }
-headerbar box:last-child button:hover {
+headerbar.bg-dark box:last-child button:hover {
     background: #232729;
     border-color: #191D1F;
 }
-headerbar box:last-child button:active {
+headerbar.bg-dark box:last-child button:active {
     box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.25);
 }
 /* MENU */
@@ -60,6 +60,14 @@ stack {
 scrolledwindow {
     border: none;
 }
+scrollbar {
+    background: #191D1F;
+    border-color: transparent;
+}
+scrollbar slider {
+    background: #888888;
+    border: 1px solid #888888;
+}
 flowboxchild {
     border-radius: 5px;
     color: #555555;
@@ -78,18 +86,33 @@ flowboxchild label {
     font-size: 15px;
 }
 /* page_info label of desc */
-stack stack box stack box stack {
+stack stack box box:nth-child(1) {
     background: #2C3234;
 }
-stack stack box stack box stack label {
+stack stack box box:nth-child(2) {
+    background: #232729;
+}
+stack stack box box:nth-child(1) label.info_title {
+    padding: 10px 20px 10px 20px;
+    color: white;
+}
+stack stack box box stack {
+    background: #2C3234;
+}
+stack stack box box:nth-child(2) stack:nth-child(2) scrolledwindow
+viewport label.info_desc {
     color: #FFFFFF;
     font-size: 15px;
 }
-stack stack box stack box list row {
+stack stack box box:nth-child(2) stack:nth-child(2) scrolledwindow
+viewport {
+    padding: 10px;
+}
+stack stack box box:nth-child(2) list row {
     background: #232729;
     color: #555;
 }
-stack stack box stack box list row:selected {
+stack stack box box:nth-child(2) list row:selected {
     background: #2C3234;
     color: #FFFFFF;
     transition: all 0.25s ease-in-out;
@@ -114,4 +137,18 @@ stack stack box box button:nth-child(2) image {
 }
 stack stack box box button:nth-child(3) image {
     color: #22CC44;
+}
+
+/* OVERLAY STYLE */
+overshoot.top {
+  background-image: none;
+}
+overshoot.bottom {
+  background-image: none;
+}
+overshoot.left {
+  background-image: none;
+}
+overshoot.right {
+  background-image: none;
 }
