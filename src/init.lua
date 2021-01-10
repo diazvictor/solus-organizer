@@ -38,7 +38,7 @@ ui.head:pack_end(Gtk.Box {
 	spacing = 6,
 	Gtk.Button {
 		on_clicked = function ()
-			print('Click!')
+			
 		end
 	},
 	Gtk.Separator {},
@@ -52,7 +52,18 @@ ui.head:pack_end(Gtk.Box {
 
 ui.head.child.btn_menu:set_popover(ui.menu)
 
+ui.btn_prev['on_clicked'] = function ()
+	ui.collection_logo:set_visible_child_name(1)
+	ui.gamelist:set_visible_child_name(1)
+end
+
+ui.btn_next['on_clicked'] = function ()
+	ui.collection_logo:set_visible_child_name(2)
+	ui.gamelist:set_visible_child_name(2)
+end
+
 require 'gamelist'
+require 'collections'
 require 'gameinfo'
 
 function ui.main_window:on_destroy()
