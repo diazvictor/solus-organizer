@@ -52,6 +52,8 @@ ui.head:pack_end(Gtk.Box {
 
 ui.head.child.btn_menu:set_popover(ui.menu)
 
+solus = class('solus')
+
 require 'gamelist'
 require 'gameinfo'
 
