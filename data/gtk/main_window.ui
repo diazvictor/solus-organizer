@@ -140,51 +140,17 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
             <property name="can_focus">False</property>
             <property name="transition_type">slide-left-right</property>
             <child>
-              <object class="GtkBox">
+              <object class="GtkBox" id="collections">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkStack" id="gamelist_logo">
+                  <object class="GtkStack" id="collection_logo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="transition_type">slide-left-right</property>
                     <child>
-                      <object class="GtkImage" id="gamelist_logo_prev">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_top">20</property>
-                        <property name="margin_bottom">20</property>
-                        <property name="stock">gtk-missing-image</property>
-                      </object>
-                      <packing>
-                        <property name="name">page_prev</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkImage" id="gamelist_logo_current">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_top">20</property>
-                        <property name="margin_bottom">20</property>
-                        <property name="stock">gtk-missing-image</property>
-                      </object>
-                      <packing>
-                        <property name="name">page_current</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkImage" id="gamelist_logo_next">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_top">20</property>
-                        <property name="margin_bottom">20</property>
-                        <property name="stock">gtk-missing-image</property>
-                      </object>
-                      <packing>
-                        <property name="name">page_next</property>
-                        <property name="position">2</property>
-                      </packing>
+                      <placeholder/>
                     </child>
                   </object>
                   <packing>
@@ -202,7 +168,7 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                     <property name="margin_top">10</property>
                     <property name="margin_bottom">10</property>
                     <child>
-                      <object class="GtkViewport">
+                      <object class="GtkViewport" id="games">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="hadjustment">adjustment1</property>
@@ -213,57 +179,7 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                             <property name="can_focus">False</property>
                             <property name="transition_type">crossfade</property>
                             <child>
-                              <object class="GtkFlowBox" id="gamelist_prev">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="margin_top">10</property>
-                                <property name="margin_bottom">10</property>
-                                <property name="homogeneous">True</property>
-                                <property name="column_spacing">10</property>
-                                <property name="row_spacing">10</property>
-                                <property name="min_children_per_line">2</property>
-                                <property name="max_children_per_line">4</property>
-                                <property name="activate_on_single_click">False</property>
-                              </object>
-                              <packing>
-                                <property name="name">page_prev</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkFlowBox" id="gamelist_current">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="margin_top">10</property>
-                                <property name="margin_bottom">10</property>
-                                <property name="homogeneous">True</property>
-                                <property name="column_spacing">10</property>
-                                <property name="row_spacing">10</property>
-                                <property name="min_children_per_line">2</property>
-                                <property name="max_children_per_line">4</property>
-                                <property name="activate_on_single_click">False</property>
-                              </object>
-                              <packing>
-                                <property name="name">page_current</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkFlowBox" id="gamelist_next">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="margin_top">10</property>
-                                <property name="margin_bottom">10</property>
-                                <property name="homogeneous">True</property>
-                                <property name="column_spacing">10</property>
-                                <property name="row_spacing">10</property>
-                                <property name="min_children_per_line">2</property>
-                                <property name="max_children_per_line">4</property>
-                                <property name="activate_on_single_click">False</property>
-                              </object>
-                              <packing>
-                                <property name="name">page_next</property>
-                                <property name="position">2</property>
-                              </packing>
+                              <placeholder/>
                             </child>
                           </object>
                         </child>
