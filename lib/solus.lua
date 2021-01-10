@@ -39,3 +39,6 @@ Gtk.StyleContext.add_provider_for_screen(
 	screen, provider,
 	GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
 )
+
+solus = class('solus')
+pagination = require 'pagination'

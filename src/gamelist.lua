@@ -6,6 +6,28 @@
  @date      09.01.2021 15:10:32 -04
 ]]
 
+pagination:new(ui.gamelist)
+pagination:set_page('page_current')
+
+pagination:new(ui.gamelist_logo)
+pagination:set_page('page_current')
+
+ui.btn_prev['on_clicked'] = function ()
+	pagination:new(ui.gamelist)
+	pagination:get_prev_page()
+
+	pagination:new(ui.gamelist_logo)
+	pagination:get_prev_page()
+end
+
+ui.btn_next['on_clicked'] = function ()
+	pagination:new(ui.gamelist)
+	pagination:get_next_page()
+
+	pagination:new(ui.gamelist_logo)
+	pagination:get_next_page()
+end
+
 --- Show game list and logo
 -- @param shortname string: shortname of collection
 -- @return boolean: true
@@ -26,11 +48,11 @@ solus['show_game_list'] = function (shortname)
 	local stream = Gio.MemoryInputStream.new_from_data(image_decode)
 	local image	 = GdkPixbuf.Pixbuf.new_from_stream(stream)
 	-- image = image:scale_simple(569, 100, 'BILINEAR')
-	ui.gamelist_collection_logo:set_from_pixbuf(image)
+	ui.gamelist_logo_current:set_from_pixbuf(image)
 
 	for i, game in pairs(collection) do
 		if type(game) == 'table' then
-			ui.gamelist:insert(Gtk.FlowBoxChild {
+			ui.gamelist_current:insert(Gtk.FlowBoxChild {
 				id = i,
 				width = 200,
 				height = 100,
@@ -43,6 +65,6 @@ solus['show_game_list'] = function (shortname)
 end
 solus.show_game_list('snes')
 
-ui.gamelist['on_child_activated'] = function (self, flowboxchild)
+ui.gamelist_current['on_child_activated'] = function (self, flowboxchild)
 	solus.show_game_info(flowboxchild.id)
 end
