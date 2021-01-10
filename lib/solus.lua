@@ -12,6 +12,9 @@ print("| 'middleclass' loaded successfully.")
 json = require 'json'
 print("| 'json' loaded successfully.")
 
+base64 = require 'base64'
+print("| 'base64' loaded successfully.")
+
 utils = require 'utils'
 print("| 'utils' loaded successfully.")
 
