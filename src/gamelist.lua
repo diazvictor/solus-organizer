@@ -6,35 +6,34 @@
  @date      09.01.2021 15:10:32 -04
 ]]
 
-local collections = {
-	{
-		name = 'Super Nintendo',
-		shortname = 'snes',
-		launch = 'snes9x-gtk',
-		games = {
-			{name = 'Super Mario World'},
-			{name = 'Castlevania Dracula X'},
-			{name = 'Contra III The Alien Wars'},
-			{name = 'Donkey Kong Country 3 - Dixie Kong\'s Double Trouble'},
-			{name = 'EarthBound'},
-			{name = 'Kirby Super Star'},
-			{name = 'Metal Warriors'},
-			{name = 'The Legend of Zelda A Link to the Past'},
-			{name = 'Super Ghouls\'N Ghost'}
-		}
-	}
-}
+--- Show game list and logo
+-- @param shortname string: shortname of collection
+-- @return boolean: true
+solus['show_game_list'] = function (shortname)
+	-- get info of game
+	local sql = [[
+		select games.id_game, games.name, games.rom
+		from collections
+		join games on (games.id_collection = collections.id_collection)
+		where collections.shortname = %s
+	]]
+	local collection = db:get_rows(sql, shortname)
 
-populate_collection = function ()
-	for _, collection in pairs(collections) do
-		for i, game in pairs(collection.games) do
+	sql = 'select logo from collections where shortname = %s'
+	collection.logo = db:get_var(sql, shortname)
+
+	local image_decode = base64.decode(collection.logo)
+	local stream = Gio.MemoryInputStream.new_from_data(image_decode)
+	local image	 = GdkPixbuf.Pixbuf.new_from_stream(stream)
+	-- image = image:scale_simple(569, 100, 'BILINEAR')
+	ui.gamelist_collection_logo:set_from_pixbuf(image)
+
+	for i, game in pairs(collection) do
+		if type(game) == 'table' then
 			ui.gamelist:insert(Gtk.FlowBoxChild {
 				id = i,
-				width = 100,
-				height = 80,
-				-- Gtk.Image {
-					-- file = v.cover
-				-- }
+				width = 200,
+				height = 100,
 				Gtk.Label {
 					label = utils:truncate(game.name, 21)
 				}
@@ -42,8 +41,8 @@ populate_collection = function ()
 		end
 	end
 end
-populate_collection()
+solus.show_game_list('snes')
 
 ui.gamelist['on_child_activated'] = function (self, flowboxchild)
-	ui.section:set_visible_child_name('gameinfo')
+	solus.show_game_info(flowboxchild.id)
 end
