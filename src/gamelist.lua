@@ -7,7 +7,7 @@
 ]]
 
 --- Show game list and logo
--- @param shortname string: shortname of collection
+-- @param id number: id of collection
 -- @return boolean: true
 solus['show_games'] = function (id_collection)
 	-- get info of game
@@ -29,7 +29,3 @@ solus['show_games'] = function (id_collection)
 		}, game.id_game)
 	end
 end
-
---ui.gamelist_current['on_child_activated'] = function (self, flowboxchild)
-	--solus.show_game_info(flowboxchild.id)
---end
