@@ -13,10 +13,17 @@ lgi = require 'lgi'
 print("| 'lgi' loaded successfully. (Thanks Pavouk!)")
 
 GObject = lgi.GObject
+print("|----- 'GObject' loaded successfully.")
 Gtk = lgi.require('Gtk', '3.0')
+print("|----- 'Gtk' loaded successfully.")
 Gdk = lgi.Gdk
+print("|----- 'Gdk' loaded successfully.")
 GLib = lgi.GLib
+print("|----- 'GLib' loaded successfully.")
+Gio = lgi.Gio
+print("|----- 'Gio' loaded successfully.")
 GdkPixbuf = lgi.GdkPixbuf
+print("|----- 'GdkPixbuf' loaded successfully.")
 
 require 'solus'
 print("Libraries loaded!\n")
