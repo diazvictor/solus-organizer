@@ -145,14 +145,14 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkImage">
+                  <object class="GtkImage" id="gamelist_collection_logo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_left">10</property>
                     <property name="margin_right">10</property>
                     <property name="margin_top">20</property>
                     <property name="margin_bottom">20</property>
-                    <property name="pixbuf">../images/logos/snes.svg</property>
+                    <property name="stock">gtk-missing-image</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -184,7 +184,7 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                             <property name="column_spacing">10</property>
                             <property name="row_spacing">10</property>
                             <property name="min_children_per_line">2</property>
-                            <property name="max_children_per_line">3</property>
+                            <property name="max_children_per_line">4</property>
                             <property name="activate_on_single_click">False</property>
                           </object>
                         </child>
@@ -219,6 +219,7 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="label" translatable="yes">null</property>
+                        <property name="ellipsize">end</property>
                         <attributes>
                           <attribute name="weight" value="bold"/>
                           <attribute name="scale" value="3"/>
