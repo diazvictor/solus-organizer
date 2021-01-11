@@ -7,23 +7,23 @@
 ]]
 
 --- Get the info game
--- @param id number: id of game
+-- @param id_game number: id of game
 -- @return table: the info
-solus['get_game_info'] = function (id)
+solus['get_game_info'] = function (id_game)
 	local sql = [[
 		select games.id_game, games.name, games.rom, collections.launch
 		from collections
 		join games on (games.id_collection = collections.id_collection)
 		where games.id_game = %d;
 	]]
-	local game = db:get_rows(sql, id)
+	local game = db:get_rows(sql, id_game)
 	return game[1]
 end
 
 --- Show game info and go to "gameinfo"
 -- @return boolean: true
-solus['show_game_info'] = function (id)
-	local game = solus.get_game_info(id)
+solus['show_game_info'] = function (iid_game)
+	local game = solus.get_game_info(id_game)
 	local command = ('"%s" "%s" &'):format(game.launch, game.rom)
 
 	ui.gameinfo_title.label = game.name
