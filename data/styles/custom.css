@@ -71,7 +71,7 @@ scrollbar slider {
 flowboxchild {
     border-radius: 5px;
     color: #555555;
-    border: 1px solid #232729;
+    border: 2px solid #232729;
 }
 flowboxchild:selected {
     background: #2C3234;
