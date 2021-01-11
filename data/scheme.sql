@@ -68,11 +68,6 @@ insert into games (name, id_collection, rom) values
 ("Plants vs. Zombies", 3, "Plants vs. Zombies.nds"),
 ("Rune Factory - A Fantasy Harvest Moon", 3, "Rune Factory - A Fantasy Harvest Moon.nds"),
 
-select count (games.id_collection)
-from collections
-join games on (collections.id_collection = games.id_collection) 
-where collections.id_collection = 1;
-
 create table average (
 	id_game 	integer,
 	created_at	datetime default (datetime('now','localtime'))
