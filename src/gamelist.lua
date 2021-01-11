@@ -6,9 +6,8 @@
  @date      09.01.2021 15:10:32 -04
 ]]
 
---- Show game list and logo
--- @param id number: id of collection
--- @return boolean: true
+--- Show list of games by id
+-- @param id_collection number: collection id
 solus['show_games'] = function (id_collection)
 	-- get info of game
 	local sql = [[
