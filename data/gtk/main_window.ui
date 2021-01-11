@@ -148,6 +148,10 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                   <object class="GtkStack" id="collection_logo">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">20</property>
+                    <property name="margin_right">20</property>
+                    <property name="margin_top">20</property>
+                    <property name="margin_bottom">20</property>
                     <property name="transition_type">slide-left-right</property>
                     <child>
                       <placeholder/>
@@ -177,6 +181,7 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                           <object class="GtkStack" id="gamelist">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="transition_duration">500</property>
                             <property name="transition_type">crossfade</property>
                             <child>
                               <placeholder/>
