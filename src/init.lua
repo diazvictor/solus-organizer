@@ -38,7 +38,6 @@ ui.head:pack_end(Gtk.Box {
 	spacing = 6,
 	Gtk.Button {
 		on_clicked = function ()
-			
 		end
 	},
 	Gtk.Separator {},
@@ -52,19 +51,34 @@ ui.head:pack_end(Gtk.Box {
 
 ui.head.child.btn_menu:set_popover(ui.menu)
 
-ui.btn_prev['on_clicked'] = function ()
-	ui.collection_logo:set_visible_child_name(1)
-	ui.gamelist:set_visible_child_name(1)
-end
-
-ui.btn_next['on_clicked'] = function ()
-	ui.collection_logo:set_visible_child_name(2)
-	ui.gamelist:set_visible_child_name(2)
-end
-
 require 'gamelist'
 require 'collections'
 require 'gameinfo'
+
+solus['set_page'] = function (page)
+	local sql = [[
+		select count (id_collection) from collections
+	]]
+	local records = db:get_var(sql)
+
+	pagination:set_page(page)
+	pagination:new({
+		records	= records,
+		limit = 1
+	})
+	solus.show_collection(page)
+end
+
+solus.set_page(1)
+local pages = pagination:get_pagination()
+
+ui.btn_prev['on_clicked'] = function ()
+	solus.set_page(pages.prev_page)
+end
+
+ui.btn_next['on_clicked'] = function ()
+	solus.show_collection(pages.next_page)
+end
 
 function ui.main_window:on_destroy()
 	db:close()
