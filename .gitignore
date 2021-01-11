@@ -1,1 +1,2 @@
-metadata.solus.txt
+# Ignore the covers and logos
+data/images/
