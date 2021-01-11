@@ -15,17 +15,17 @@ solus['show_collections'] = function ()
 	]]
 	local collections = db:get_rows(sql)
 
-	for _,value in pairs(collections) do
-		local image_decode = base64.decode(value.logo)
-		local stream 	   = Gio.MemoryInputStream.new_from_data(image_decode)
-		local image	   = GdkPixbuf.Pixbuf.new_from_stream(stream)
+	for _, collection in pairs(collections) do
+		local image_decode = base64.decode(collection.logo)
+		local stream = Gio.MemoryInputStream.new_from_data(image_decode)
+		local image	= GdkPixbuf.Pixbuf.new_from_stream(stream)
 
 		ui.collection_logo:add_titled(Gtk.Image {
 			pixbuf = image
-		}, value.id_collection, value.shortname)
+		}, collection.id_collection, collection.shortname)
 
 		ui.gamelist:add_titled(Gtk.FlowBox {
-			id = value.id_collection,
+			id = collection.id_collection,
 			column_spacing = 20,
 			row_spacing = 20,
 			max_children_per_line = 4,
@@ -34,9 +34,9 @@ solus['show_collections'] = function ()
 			on_child_activated = function (self, flowboxchild)
 				solus.show_game_info(flowboxchild.id)
 			end
-		}, value.id_collection, value.shortname)
+		}, collection.id_collection, collection.shortname)
 
-		solus.show_games(value.id_collection)
+		solus.show_games(collection.id_collection)
 	end
 end
 
