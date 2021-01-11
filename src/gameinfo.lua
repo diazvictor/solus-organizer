@@ -20,9 +20,9 @@ solus['get_game_info'] = function (id_game)
 	return game[1]
 end
 
---- Show game info and go to "gameinfo"
--- @return boolean: true
-solus['show_game_info'] = function (iid_game)
+--- Show game info by id
+-- @param id_game number: game id
+solus['show_game_info'] = function (id_game)
 	local game = solus.get_game_info(id_game)
 	local command = ('"%s" "%s" &'):format(game.launch, game.rom)
 
@@ -34,7 +34,6 @@ solus['show_game_info'] = function (iid_game)
 	end
 
 	ui.section:set_visible_child_name('gameinfo')
-	return true
 end
 
 ui.gameinfo_sidebar['on_row_activated'] = function ()
