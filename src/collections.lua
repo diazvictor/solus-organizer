@@ -51,7 +51,7 @@ function solus:show_collections()
 				min_children_per_line = 2,
 				activate_on_single_click = false,
 				on_child_activated = function (self, flowboxchild)
-					solus.show_game_info(flowboxchild.id)
+					solus:show_game_info(flowboxchild.id)
 				end
 			}, collection.id_collection, collection.shortname)
 		end

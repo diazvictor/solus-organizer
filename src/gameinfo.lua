@@ -9,7 +9,7 @@
 --- Get the info game
 -- @param id_game number: id of game
 -- @return table: the info
-solus['get_game_info'] = function (id_game)
+function solus:get_game_info (id_game)
 	local sql = [[
 		select games.id_game, games.name, games.rom, collections.launch
 		from collections
@@ -22,8 +22,8 @@ end
 
 --- Show game info by id
 -- @param id_game number: game id
-solus['show_game_info'] = function (id_game)
-	local game = solus.get_game_info(id_game)
+function solus:show_game_info (id_game)
+	local game = solus:get_game_info(id_game)
 	local command = ('"%s" "%s" &'):format(game.launch, game.rom)
 
 	ui.gameinfo_title.label = game.name
@@ -36,7 +36,7 @@ solus['show_game_info'] = function (id_game)
 	ui.section:set_visible_child_name('gameinfo')
 end
 
-ui.gameinfo_sidebar['on_row_activated'] = function ()
+function ui.gameinfo_sidebar:on_row_activated ()
 	if ui.btn_info_desc:is_selected() == true then
 		ui.gameinfo_pages:set_visible_child_name('gameinfo_page_desc')
 	elseif ui.btn_info_screen:is_selected() == true then
@@ -46,6 +46,6 @@ ui.gameinfo_sidebar['on_row_activated'] = function ()
 	end
 end
 
-ui.gameinfo_btn_back['on_clicked'] = function ()
+function ui.gameinfo_btn_back:on_clicked ()
 	ui.section:set_visible_child_name('gamelist')
 end
