@@ -55,29 +55,17 @@ require 'gamelist'
 require 'collections'
 require 'gameinfo'
 
-solus['set_page'] = function (page)
-	local sql = [[
-		select count (id_collection) from collections
-	]]
-	local records = db:get_var(sql)
+pages = solus:get_pages(1)
+solus.show_collections()
 
-	pagination:set_page(page)
-	pagination:new({
-		records	= records,
-		limit = 1
-	})
-	solus.show_collection(page)
+function ui.btn_prev:on_clicked()
+	pages = solus:get_pages(pages.prev_page)
+	solus.show_collections()
 end
 
-solus.set_page(1)
-local pages = pagination:get_pagination()
-
-ui.btn_prev['on_clicked'] = function ()
-	solus.set_page(pages.prev_page)
-end
-
-ui.btn_next['on_clicked'] = function ()
-	solus.show_collection(pages.next_page)
+function ui.btn_next:on_clicked()
+	pages = solus:get_pages(pages.next_page)
+	solus.show_collections()
 end
 
 function ui.main_window:on_destroy()
