@@ -38,16 +38,17 @@ function solus:show_collections()
 			local image	= GdkPixbuf.Pixbuf.new_from_stream(stream)
 
 			ui.collection_logo:add_titled(Gtk.Image {
-				visible=true,
+				visible = true,
 				pixbuf = image
 			}, collection.id_collection, collection.shortname)
 
 			ui.gamelist:add_titled(Gtk.FlowBox {
 				id = collection.id_collection,
-				visible=true,
+				expand = false,
+				visible = true,
 				column_spacing = 20,
 				row_spacing = 20,
-				max_children_per_line = 4,
+				max_children_per_line = 3,
 				min_children_per_line = 2,
 				activate_on_single_click = false,
 				on_child_activated = function (self, flowboxchild)
