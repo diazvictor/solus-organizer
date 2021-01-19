@@ -33,7 +33,7 @@ local builder = Gtk.Builder()
 assert(builder:add_from_file('../data/gtk/main_window.ui'), 'ERROR: the file does not exist')
 ui = builder.objects
 
-ui.head:pack_end(Gtk.Box {
+ui.header:pack_end(Gtk.Box {
 	orientation = 'HORIZONTAL',
 	spacing = 6,
 	Gtk.Button {
@@ -47,9 +47,8 @@ ui.head:pack_end(Gtk.Box {
 			icon_name = 'open-menu-symbolic'
 		}
 	}
-}, false, false, 0)
-
-ui.head.child.btn_menu:set_popover(ui.menu)
+})
+ui.header.child.btn_menu:set_popover(ui.menu)
 
 require 'gamelist'
 require 'collections'
@@ -57,6 +56,18 @@ require 'gameinfo'
 
 pages = solus:get_pages(1)
 solus.show_collections()
+
+function ui.btn_new:on_clicked ()
+	ui.nav:set_visible_child_name('nav_new')
+	ui.body:set_visible_child_name('new')
+	ui.collections_liststore:clear()
+	populate_collections()
+end
+
+function ui.btn_back:on_clicked ()
+	ui.nav:set_visible_child_name('nav_collection')
+	ui.body:set_visible_child_name('collections')
+end
 
 function ui.btn_prev:on_clicked()
 	pages = solus:get_pages(pages.prev_page)
