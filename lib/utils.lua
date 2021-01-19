@@ -1,8 +1,8 @@
 --[[--
  @package   SODplayer
- @filename  utils.lua  
+ @filename  utils.lua
  @version   1.5
- @author    Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com> 
+ @author    Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
  @date      01.08.2020 19:22:11 -04
 --]]
 
@@ -45,6 +45,13 @@ function utils:truncate(str, letter)
 	else
 		return s
 	end
+end
+
+--- Remueve espacios iniciales y finales de una cadena
+--- @param value el texto a limpiar
+--- @return el texto limpiado
+function utils:trim(value)
+	return (string.gsub(value, "%s+$", ""):gsub("^%s+", ""))
 end
 
 return utils
