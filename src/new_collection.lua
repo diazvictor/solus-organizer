@@ -6,6 +6,9 @@
  @date      17.01.2021 01:58:40 -04
 ]]
 
+--- I show the collections in a table
+-- if name exists I show the similarities, if not I show all
+-- @param name string: the collection name
 function populate_collections (name)
 	local sql, collections
 	if name then
@@ -27,7 +30,9 @@ function populate_collections (name)
 	end
 end
 
---- Retorno el nombre de una columna seleccionada
+--- I return the name of a selected column
+-- @param treeview userdata: GtkTreeView widget
+-- @return string
 function solus:get_row_name (treeview)
 	local selection = treeview:get_selection()
 	selection.mode = 'SINGLE'
@@ -39,6 +44,7 @@ function solus:get_row_name (treeview)
 	end
 end
 
+--- Clear fields
 function clear_collection_info ()
 	ui.collection_name.text = ''
 	ui.collection_shortname.text = ''
@@ -46,6 +52,8 @@ function clear_collection_info ()
 	ui.collection_launch_buffer.text = ''
 end
 
+--- Edit collection by name
+-- @param name string: the collection name
 function edit_collection (name)
 	local sql = [[
 		select *
@@ -60,6 +68,7 @@ function edit_collection (name)
 	ui.collection_launch_buffer.text = collection.launch or 'nil'
 end
 
+--- By clicking on a column
 function ui.collections_view:on_row_activated ()
 	local row_name = solus:get_row_name(ui.collections_view)
 	ui.games_liststore:clear()
@@ -68,12 +77,14 @@ function ui.collections_view:on_row_activated ()
 	edit_collection(row_name)
 end
 
+--- When doing a search
 function ui.search_collections:on_changed ()
 	local search = ui.search_collections.text
 	ui.collections_liststore:clear()
 	populate_collections(search)
 end
 
+--- By pressing the button (new collection)
 function ui.btn_new_collection:on_clicked ()
 	clear_collection_info()
 	ui.forms:set_visible_child_name('new_collection')
