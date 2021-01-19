@@ -66,11 +66,6 @@ function ui.btn_new:on_clicked ()
 	populate_collections()
 end
 
-function ui.btn_back:on_clicked ()
-	ui.nav:set_visible_child_name('nav_collection')
-	ui.body:set_visible_child_name('collections')
-end
-
 function ui.btn_prev:on_clicked()
 	pages = solus:get_pages(pages.prev_page)
 	solus.show_collections()
@@ -79,6 +74,23 @@ end
 function ui.btn_next:on_clicked()
 	pages = solus:get_pages(pages.next_page)
 	solus.show_collections()
+end
+
+--- Back to previous page
+function ui.btn_back:on_clicked ()
+	ui.nav:set_visible_child_name('nav_collection')
+	ui.body:set_visible_child_name('collections')
+end
+
+--- I check the page I am currently on
+function ui.btn_save:on_clicked ()
+	if (ui.forms:get_visible_child_name() == 'new_collection') then
+		local row_name = solus:get_row_name(ui.collections_view)
+		local ok, msg = save_collection(row_name)
+		print(msg)
+	elseif (ui.forms:get_visible_child_name() == 'new_game') then
+		print('In progress')
+	end
 end
 
 function ui.main_window:on_destroy()
