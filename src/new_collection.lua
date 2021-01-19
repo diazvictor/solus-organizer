@@ -52,9 +52,9 @@ function clear_collection_info ()
 	ui.collection_launch_buffer.text = ''
 end
 
---- Edit collection by name
+--- Show collection info by name
 -- @param name string: the collection name
-function edit_collection (name)
+function solus:show_collection_info (name)
 	local sql = [[
 		select *
 			from collections
@@ -68,13 +68,77 @@ function edit_collection (name)
 	ui.collection_launch_buffer.text = collection.launch or 'nil'
 end
 
+--- Validation of the fields
+-- @return boolean: true whether the validation was successful
+-- or false in the opposite case
+-- @return msg string: response message
+function validate_collection ()
+	local msg
+	if (utils:trim(ui.collection_name.text) == '') then
+		msg = 'The name of the collection is a required field.'
+		ui.collection_name:grab_focus()
+	elseif (utils:trim(ui.collection_launch_buffer.text) == '') then
+		msg = 'The collection launcher is a required field.'
+		ui.collection_launch:grab_focus()
+	end
+	if (msg) then
+		return false, msg
+	end
+	return true
+end
+
+--- Save collection, if the argument name exists
+-- the collection is updated
+-- @param name string: the collection name
+-- @return boolean: true if the query was executed or
+-- false in the opposite case
+-- @return msg string: response message
+function save_collection (name)
+	local sql, msg
+	local values = {
+		ui.collection_name.text,
+		ui.collection_shortname.text,
+		ui.collection_desc_buffer.text,
+		ui.collection_launch_buffer.text
+	}
+	local validate, err = validate_collection()
+	if ( not validate ) then
+		return false, err
+	end
+
+	if (name) then
+		sql = [[
+			update collections set name = %s, shortname = %s,
+			description = %s, launch = %s
+			where name = %s
+		]]
+		table.insert(values, name)
+		msg = 'Colección actualizada con exito!'
+	else
+		sql = [[
+			insert into collections (
+				name, shortname, description, launch
+			) values (%s, %s, %s, %s)
+		]]
+		msg = 'Colección registrada con exito!'
+	end
+
+	local ok, err = db:execute(sql, values)
+	if (not ok) then
+		return false, err
+	end
+	ui.collections_liststore:clear()
+	populate_collections()
+	return true, msg
+end
+
 --- By clicking on a column
 function ui.collections_view:on_row_activated ()
 	local row_name = solus:get_row_name(ui.collections_view)
 	ui.games_liststore:clear()
 	populate_games(row_name)
 	ui.forms:set_visible_child_name('new_collection')
-	edit_collection(row_name)
+	solus:show_collection_info(row_name)
 end
 
 --- When doing a search
@@ -86,6 +150,10 @@ end
 
 --- By pressing the button (new collection)
 function ui.btn_new_collection:on_clicked ()
+	local selection = ui.collections_view:get_selection()
+	selection.mode = 'SINGLE'
+	selection:unselect_all()
 	clear_collection_info()
+	ui.games_liststore:clear()
 	ui.forms:set_visible_child_name('new_collection')
 end
