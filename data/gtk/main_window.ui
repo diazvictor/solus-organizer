@@ -160,7 +160,7 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                 </child>
               </object>
               <packing>
-                <property name="name">nav_collections</property>
+                <property name="name">nav_collection</property>
               </packing>
             </child>
             <child>
