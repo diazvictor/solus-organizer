@@ -113,14 +113,14 @@ function save_collection (name)
 			where name = %s
 		]]
 		table.insert(values, name)
-		msg = 'Colección actualizada con exito!'
+		msg = 'Successfully updated collection!'
 	else
 		sql = [[
 			insert into collections (
 				name, shortname, description, launch
 			) values (%s, %s, %s, %s)
 		]]
-		msg = 'Colección registrada con exito!'
+		msg = 'Successfully registered collection!'
 	end
 
 	local ok, err = db:execute(sql, values)
