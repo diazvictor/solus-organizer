@@ -1201,160 +1201,233 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                 <property name="margin_bottom">15</property>
                 <property name="transition_type">slide-left-right</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkScrolledWindow">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">5</property>
+                    <property name="can_focus">True</property>
+                    <property name="shadow_type">in</property>
                     <child>
-                      <object class="GtkFrame">
+                      <object class="GtkViewport">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label_xalign">0</property>
-                        <property name="shadow_type">none</property>
                         <child>
-                          <object class="GtkEntry" id="collection_name">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
+                          <object class="GtkBox">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Collection name (required)</property>
-                            <attributes>
-                              <attribute name="foreground" value="#ffffffffffff"/>
-                            </attributes>
-                          </object>
-                        </child>
-                        <style>
-                          <class name="field"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkFrame">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label_xalign">0</property>
-                        <property name="shadow_type">none</property>
-                        <child>
-                          <object class="GtkEntry" id="collection_shortname">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Shortened name (required)</property>
-                            <attributes>
-                              <attribute name="foreground" value="#ffffffffffff"/>
-                            </attributes>
-                          </object>
-                        </child>
-                        <style>
-                          <class name="field"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkFrame">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label_xalign">0</property>
-                        <property name="shadow_type">none</property>
-                        <child>
-                          <object class="GtkScrolledWindow">
-                            <property name="height_request">100</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="shadow_type">in</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">5</property>
                             <child>
-                              <object class="GtkTextView" id="collection_desc">
+                              <object class="GtkFrame">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="buffer">collection_desc_buffer</property>
+                                <property name="can_focus">False</property>
+                                <property name="label_xalign">0</property>
+                                <property name="shadow_type">none</property>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="orientation">vertical</property>
+                                    <property name="spacing">5</property>
+                                    <child>
+                                      <object class="GtkImage" id="collection_logo_preview">
+                                        <property name="height_request">100</property>
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="stock">gtk-missing-image</property>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkFileChooserButton" id="btn_logo_collection">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="title" translatable="yes"/>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child type="label">
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label" translatable="yes">Logo</property>
+                                    <attributes>
+                                      <attribute name="foreground" value="#ffffffffffff"/>
+                                    </attributes>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="field"/>
+                                </style>
                               </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
                             </child>
-                          </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Description</property>
-                            <attributes>
-                              <attribute name="foreground" value="#ffffffffffff"/>
-                            </attributes>
-                          </object>
-                        </child>
-                        <style>
-                          <class name="field"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkFrame">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label_xalign">0</property>
-                        <property name="shadow_type">none</property>
-                        <child>
-                          <object class="GtkScrolledWindow">
-                            <property name="height_request">100</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="shadow_type">in</property>
                             <child>
-                              <object class="GtkTextView" id="collection_launch">
+                              <object class="GtkFrame">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="buffer">collection_launch_buffer</property>
+                                <property name="can_focus">False</property>
+                                <property name="label_xalign">0</property>
+                                <property name="shadow_type">none</property>
+                                <child>
+                                  <object class="GtkEntry" id="collection_name">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                  </object>
+                                </child>
+                                <child type="label">
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label" translatable="yes">Collection name (required)</property>
+                                    <attributes>
+                                      <attribute name="foreground" value="#ffffffffffff"/>
+                                    </attributes>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="field"/>
+                                </style>
                               </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
                             </child>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label_xalign">0</property>
+                                <property name="shadow_type">none</property>
+                                <child>
+                                  <object class="GtkEntry" id="collection_shortname">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                  </object>
+                                </child>
+                                <child type="label">
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label" translatable="yes">Shortened name (required)</property>
+                                    <attributes>
+                                      <attribute name="foreground" value="#ffffffffffff"/>
+                                    </attributes>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="field"/>
+                                </style>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label_xalign">0</property>
+                                <property name="shadow_type">none</property>
+                                <child>
+                                  <object class="GtkScrolledWindow">
+                                    <property name="height_request">100</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="shadow_type">in</property>
+                                    <child>
+                                      <object class="GtkTextView" id="collection_desc">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="wrap_mode">word-char</property>
+                                        <property name="buffer">collection_desc_buffer</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child type="label">
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label" translatable="yes">Description</property>
+                                    <attributes>
+                                      <attribute name="foreground" value="#ffffffffffff"/>
+                                    </attributes>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="field"/>
+                                </style>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">3</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label_xalign">0</property>
+                                <property name="shadow_type">none</property>
+                                <child>
+                                  <object class="GtkScrolledWindow">
+                                    <property name="height_request">100</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="shadow_type">in</property>
+                                    <child>
+                                      <object class="GtkTextView" id="collection_launch">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="buffer">collection_launch_buffer</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child type="label">
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label" translatable="yes">Default launch command (required)</property>
+                                    <attributes>
+                                      <attribute name="foreground" value="#ffffffffffff"/>
+                                    </attributes>
+                                  </object>
+                                </child>
+                                <style>
+                                  <class name="field"/>
+                                </style>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">4</property>
+                              </packing>
+                            </child>
+                            <style>
+                              <class name="forms"/>
+                            </style>
                           </object>
                         </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Default launch command (required)</property>
-                            <attributes>
-                              <attribute name="foreground" value="#ffffffffffff"/>
-                            </attributes>
-                          </object>
-                        </child>
-                        <style>
-                          <class name="field"/>
-                        </style>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
-                      </packing>
                     </child>
-                    <style>
-                      <class name="forms"/>
-                    </style>
                   </object>
                   <packing>
                     <property name="name">new_collection</property>
@@ -1388,7 +1461,7 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                                     <property name="orientation">vertical</property>
                                     <property name="spacing">5</property>
                                     <child>
-                                      <object class="GtkImage" id="logo_preview">
+                                      <object class="GtkImage" id="game_logo_preview">
                                         <property name="height_request">100</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
@@ -1401,7 +1474,7 @@ Author: Díaz Urbaneja Víctor Eduardo Diex
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkFileChooserButton" id="btn_logo">
+                                      <object class="GtkFileChooserButton" id="btn_logo_game">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
                                         <property name="title" translatable="yes"/>
