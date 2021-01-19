@@ -52,6 +52,8 @@ ui.header.child.btn_menu:set_popover(ui.menu)
 
 require 'gamelist'
 require 'collections'
+require 'new_game'
+require 'new_collection'
 require 'gameinfo'
 
 pages = solus:get_pages(1)
