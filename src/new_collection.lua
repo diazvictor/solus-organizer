@@ -46,6 +46,8 @@ end
 
 --- Clear fields
 function clear_collection_info ()
+	ui.collection_logo_preview.stock = 'gtk-missing-image'
+	ui.btn_logo_collection:unselect_all()
 	ui.collection_name.text = ''
 	ui.collection_shortname.text = ''
 	ui.collection_desc_buffer.text = ''
@@ -61,6 +63,13 @@ function solus:show_collection_info (name)
 		where name = %s;
 	]]
 	local collection = db:get_rows(sql, name)[1]
+
+	if collection.logo ~= nil and collection.logo ~= '' then
+		local logo = solus:decode_image(collection.logo, 420, 100)
+		ui.collection_logo_preview.pixbuf = logo
+	else
+		ui.collection_logo_preview.stock = 'gtk-missing-image'
+	end
 
 	ui.collection_name.text = collection.name or 'nil'
 	ui.collection_shortname.text = collection.shortname or 'nil'
@@ -94,13 +103,24 @@ end
 -- false in the opposite case
 -- @return msg string: response message
 function save_collection (name)
-	local sql, msg
+	local sql, msg, logo_default, logo
+
+	if name then
+		sql = "select logo from collections where name = %s"
+		logo_default = db:get_var(sql, name)
+	end
+	logo = solus:encode_image(
+		ui.btn_logo_collection:get_filename()
+	) or logo_default or ''
+
 	local values = {
+		logo,
 		ui.collection_name.text,
 		ui.collection_shortname.text,
 		ui.collection_desc_buffer.text,
 		ui.collection_launch_buffer.text
 	}
+
 	local validate, err = validate_collection()
 	if ( not validate ) then
 		return false, err
@@ -108,7 +128,7 @@ function save_collection (name)
 
 	if (name) then
 		sql = [[
-			update collections set name = %s, shortname = %s,
+			update collections set logo = %s, name = %s, shortname = %s,
 			description = %s, launch = %s
 			where name = %s
 		]]
@@ -117,8 +137,8 @@ function save_collection (name)
 	else
 		sql = [[
 			insert into collections (
-				name, shortname, description, launch
-			) values (%s, %s, %s, %s)
+				logo, name, shortname, description, launch
+			) values (%s, %s, %s, %s, %s)
 		]]
 		msg = 'Successfully registered collection!'
 	end
@@ -127,6 +147,7 @@ function save_collection (name)
 	if (not ok) then
 		return false, err
 	end
+
 	ui.collections_liststore:clear()
 	populate_collections()
 	return true, msg
