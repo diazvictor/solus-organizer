@@ -155,11 +155,18 @@ end
 
 --- By clicking on a column
 function ui.collections_view:on_row_activated ()
-	local row_name = solus:get_row_name(ui.collections_view)
-	ui.games_liststore:clear()
-	populate_games(row_name)
-	ui.forms:set_visible_child_name('new_collection')
-	solus:show_collection_info(row_name)
+	if (ui.forms:get_visible_child_name() == 'new_collection') then
+		local row_name = solus:get_row_name(ui.collections_view)
+		ui.games_liststore:clear()
+		populate_games(row_name)
+		ui.forms:set_visible_child_name('new_collection')
+		solus:show_collection_info(row_name)
+	elseif (ui.forms:get_visible_child_name() == 'new_game') then
+		local row_name = solus:get_row_name(ui.collections_view)
+		ui.games_liststore:clear()
+		populate_games(row_name)
+		clear_game_info()
+	end
 end
 
 --- When doing a search
