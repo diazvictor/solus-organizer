@@ -89,7 +89,14 @@ function ui.btn_save:on_clicked ()
 		local ok, msg = save_collection(row_name)
 		print(msg)
 	elseif (ui.forms:get_visible_child_name() == 'new_game') then
-		print('In progress')
+		local collection_name = solus:get_row_name(ui.collections_view)
+		if collection_name then
+			local ok, msg = save_game()
+			print(msg)
+		else
+			print('The collection of the game is required field.')
+			return false
+		end
 	end
 end
 
