@@ -6,7 +6,8 @@ Solus is a simple and hackable place where you can store your library of retro g
 * [lgi](https://github.com/pavouk/lgi)
 
 ## Running steps:
-Execute `init.lua` with Lua5.1+ (Or LuaJIT)
+`chmod +x solus
+./solus`
 
 ## Contact me!
 - Email: [victor.vector008@gmail.com](mailto:victor.vector008@gmail.com)
