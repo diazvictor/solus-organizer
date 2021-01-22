@@ -1,15 +1,16 @@
-# Solus Frontend
+# Solus Organizer [WIP]:
+Solus is your personal application to manage your retro games
 
-Solus is a graphical frontend for browsing your game library (especially retro games) and launching them from one place. Written in lua + lgi
-
-This software require:
-* [lua5.1](https://www.lua.org/download.html)
+## Dependencies:
+* [lua5.1+](https://www.lua.org/download.html) (or [LuaJIT 2.0+](https://luajit.org/)) 
 * [lgi](https://github.com/pavouk/lgi)
+* [lsqlite3](https://luarocks.org/modules/dougcurrie/lsqlite3)
 
-## Contacts
+## Running steps:
+`chmod +x solus
+./solus`
+
+## Contact me!
 - Email: [victor.vector008@gmail.com](mailto:victor.vector008@gmail.com)
 - Website: [https://diazvictor.gitlab.io](https://diazvictor.gitlab.io)
 - Telegram: [https://t.me/diazvictor](https://t.me/diazvictor)
-
-## Run
-Execute: `init.lua` with Lua5.1
