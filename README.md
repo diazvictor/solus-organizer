@@ -1,15 +1,14 @@
-# Solus Frontend
+# Solus [WIP]:
+Solus is a simple and hackable place where you can store your library of retro games.
 
-Solus is a graphical frontend for browsing your game library (especially retro games) and launching them from one place. Written in lua + lgi
-
-This software require:
-* [lua5.1](https://www.lua.org/download.html)
+## Dependencies:
+* [lua5.1+](https://www.lua.org/download.html) (or [LuaJIT 2.0+](https://luajit.org/)) 
 * [lgi](https://github.com/pavouk/lgi)
 
-## Contacts
+## Running steps:
+Execute `init.lua` with Lua5.1+ (Or LuaJIT)
+
+## Contact me!
 - Email: [victor.vector008@gmail.com](mailto:victor.vector008@gmail.com)
 - Website: [https://diazvictor.gitlab.io](https://diazvictor.gitlab.io)
 - Telegram: [https://t.me/diazvictor](https://t.me/diazvictor)
-
-## Run
-Execute: `init.lua` with Lua5.1
