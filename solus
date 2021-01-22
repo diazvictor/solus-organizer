@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd "src/"
-luajit "init.lua"
+lua "init.lua"
