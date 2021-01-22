@@ -91,7 +91,7 @@ end
 function ui.btn_logo_game:on_selection_changed ()
 	if ui.btn_logo_game:get_filename() then
 		local image_b64 = solus:encode_image(ui.btn_logo_game:get_filename())
-		local image = solus:decode_image(image_b64)
+		local image = solus:decode_image(image_b64, 200, 150)
 		ui.game_logo_preview:set_from_pixbuf(image)
 	end
 end

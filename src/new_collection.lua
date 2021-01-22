@@ -65,7 +65,7 @@ function solus:show_collection_info (name)
 	local collection = db:get_rows(sql, name)[1]
 
 	if collection.logo ~= nil and collection.logo ~= '' then
-		local logo = solus:decode_image(collection.logo, 420, 100)
+		local logo = solus:decode_image(collection.logo, 418, 100)
 		ui.collection_logo_preview.pixbuf = logo
 	else
 		ui.collection_logo_preview.stock = 'gtk-missing-image'
@@ -75,6 +75,14 @@ function solus:show_collection_info (name)
 	ui.collection_shortname.text = collection.shortname or 'nil'
 	ui.collection_desc_buffer.text = collection.description or 'nil'
 	ui.collection_launch_buffer.text = collection.launch or 'nil'
+end
+
+function ui.btn_logo_collection:on_selection_changed ()
+	if ui.btn_logo_collection:get_filename() then
+		local image_b64 = solus:encode_image(ui.btn_logo_collection:get_filename())
+		local image = solus:decode_image(image_b64, 418, 100)
+		ui.collection_logo_preview:set_from_pixbuf(image)
+	end
 end
 
 --- Validation of the fields
