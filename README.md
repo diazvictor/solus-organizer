@@ -1,5 +1,5 @@
-# Solus [WIP]:
-Solus is a simple and hackable place where you can store your library of retro games.
+# Solus Organizer [WIP]:
+Solus is your personal application to manage your retro games
 
 ## Dependencies:
 * [lua5.1+](https://www.lua.org/download.html) (or [LuaJIT 2.0+](https://luajit.org/)) 
